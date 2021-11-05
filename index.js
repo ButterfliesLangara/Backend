@@ -1,21 +1,25 @@
-import express from "express";
-import routes from "./src/routes/Route";
-import stripe from 'stripe'
-import bodyParser from "body-parser";
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+
 
 const app = express();
-const PORT = 4000;
 
-
-
-// bodyparser setup
-
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-routes(app);
+app.use(bodyParser.urlencoded({ extended: true }));
 
-
-app.listen(PORT, () => {
-  console.log(`${PORT}`);
+// simple route
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to Stepaw application." });
 });
+
+require("./src/routes/user.routes.js")(app);
+
+// set port, listen for requests
+app.listen(3000, () => {
+    console.log("Server is running on port 3000.");
+});
+
+
+
