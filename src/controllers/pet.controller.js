@@ -1,4 +1,4 @@
-const User = require("../models/user.model.js");
+const Pet = require("../models/pet.model.js");
 
 exports.create = (req, res) => {
    if (!req.body) {
@@ -7,26 +7,26 @@ exports.create = (req, res) => {
         });
     };
     const user = new User({
-        UserID : req.body.UserID,
-        UserName : req.body.UserName,
-        FirstName : req.body.FirstName,
-        LastName : req.body.LastName,
-        EmailID : req.body.EmailID,
-        BluetoothID : req.body.BluetoothID
+        PetID : req.body.PetID,
+        Breed : req.body.Breed,
+        Age : req.body.Age,
+        Weight : req.body.Weight,
+        Picture : req.body.Picture,
+        NumberOfSteps : req.body.NumberOfSteps
     });
-    User.create(user, (err, data) => {
+    Pet.create(user, (err, data) => {
         if (err)
           res.status(500).send({
             message:
-              err.message || "Some error occurred while creating the Customer."
+              err.message || "Some error occurred while creating the Pets."
           });
         else res.send(data);
     });
 }
 
-// Retrieve all Customers from the database.
+// Retrieve all Pets from the database.
 exports.findAll = (req, res) => {
-    User.getAll((err, data) => {
+    Pet.getAll((err, data) => {
         if (err)
             res.status(500).send({
             message:
@@ -36,24 +36,24 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single Customer with a customerId
+// Find a single Pet with a customerId
 exports.findOne = (req, res) => {
-    User.findById(req.params.UserID, (err, data) => {
+    Pet.findById(req.params.PetID, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `Not found Customer with id ${req.params.UserID}.`
+              message: `Not found Pet with id ${req.params.UserID}.`
             });
           } else {
             res.status(500).send({
-              message: "Error retrieving Customer with id " + req.params.UserID
+              message: "Error retrieving Pet with id " + req.params.UserID
             });
           }
         } else res.send(data);
       });
 };
 
-    // Update a Customer identified by the customerId in the request
+    // Update a Pet identified by the customerId in the request
     exports.update = (req, res) => {
         // Validate Request
         if (!req.body) {
@@ -69,11 +69,11 @@ exports.findOne = (req, res) => {
             if (err) {
                 if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found Customer with id ${req.params.UserID}.`
+                    message: `Not found Pet with id ${req.params.UserID}.`
                 });
                 } else {
                 res.status(500).send({
-                    message: "Error updating Customer with id " + req.params.UserID
+                    message: "Error updating Pet with id " + req.params.UserID
                 });
                 }
             } else res.send(data);
@@ -81,31 +81,31 @@ exports.findOne = (req, res) => {
         );
     };
 
-    // Delete a Customer with the specified customerId in the request
+    // Delete a Pet with the specified customerId in the request
     exports.delete = (req, res) => {
-        User.remove(req.params.UserID, (err, data) => {
+        Pet.remove(req.params.PetID, (err, data) => {
             if (err) {
               if (err.kind === "not_found") {
                 res.status(404).send({
-                  message: `Not found Customer with id ${req.params.customerId}.`
+                  message: `Not found Pet with id ${req.params.customerId}.`
                 });
               } else {
                 res.status(500).send({
-                  message: "Could not delete Customer with id " + req.params.customerId
+                  message: "Could not delete Pet with id " + req.params.customerId
                 });
               }
-            } else res.send({ message: `Customer was deleted successfully!` });
+            } else res.send({ message: `Pet was deleted successfully!` });
         });
     };
 
-    // Delete all Customers from the database.
+    // Delete all Pets from the database.
     exports.deleteAll = (req, res) => {
-        User.removeAll((err, data) => {
+        Pet.removeAll((err, data) => {
             if (err)
               res.status(500).send({
                 message:
                   err.message || "Some error occurred while removing all customers."
               });
-            else res.send({ message: `All Customers were deleted successfully!` });
+            else res.send({ message: `All Pets were deleted successfully!` });
         });
     };

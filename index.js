@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 });
 
 require("./src/routes/user.routes.js")(app);
+require("./src/routes/pet.routes.js")(app);
 
 // set port, listen for requests
 app.listen(3000, () => {
