@@ -12,7 +12,10 @@ exports.create = (req, res) => {
         Age : req.body.Age,
         Weight : req.body.Weight,
         Picture : req.body.Picture,
-        NumberOfSteps : req.body.NumberOfSteps
+        NumberOfSteps : req.body.NumberOfSteps,
+        UserID : req.body.UserID,
+        Distance: req.body.Distance,
+        Duration: req.body.Duration
     });
     Pet.create(user, (err, data) => {
         if (err)
