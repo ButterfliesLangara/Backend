@@ -1,14 +1,17 @@
 const sql = require("./db.js");
 
 // constructor
-const Pet = function(Pets) {
-    this.PetID = Pets.PetID;
-    this.Breed = Pets.Breed;
-    this.Age = Pets.Age;
-    this.Weight = Pets.Weight;
-    this.Gender = Pets.Gender;
-    this.Picture = Pets.Picture;
-    this.NumberOfSteps = Pets.NumberOfSteps
+const Pet = function(Pet) {
+    this.PetID = Pet.PetID;
+    this.Breed = Pet.Breed;
+    this.Age = Pet.Age;
+    this.Weight = Pet.Weight;
+    this.Gender = Pet.Gender;
+    this.Picture = Pet.Picture;
+    this.NumberOfSteps = Pet.NumberOfSteps;
+    this.Distance = Pet.Distance;
+    this.Duration = Pet.Duration;
+    this.UserID = Pet.UserID;
 };
 
 Pet.create = (newPet, result) => {
