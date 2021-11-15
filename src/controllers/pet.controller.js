@@ -6,7 +6,7 @@ exports.create = (req, res) => {
         message: "Content can not be empty!"
         });
     };
-    const user = new User({
+    const pet = new Pet({
         PetID : req.body.PetID,
         Breed : req.body.Breed,
         Age : req.body.Age,
@@ -17,7 +17,7 @@ exports.create = (req, res) => {
         Distance: req.body.Distance,
         Duration: req.body.Duration
     });
-    Pet.create(user, (err, data) => {
+    Pet.create(pet, (err, data) => {
         if (err)
           res.status(500).send({
             message:
