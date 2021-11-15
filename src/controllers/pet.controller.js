@@ -11,6 +11,7 @@ exports.create = (req, res) => {
         Breed : req.body.Breed,
         Age : req.body.Age,
         Weight : req.body.Weight,
+        Gender : req.body.Gender,
         Picture : req.body.Picture,
         NumberOfSteps : req.body.NumberOfSteps,
         UserID : req.body.UserID,
