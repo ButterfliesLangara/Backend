@@ -1,7 +1,7 @@
 const sql = require("./db.js");
 
 // constructor
-const Pet = function(Pet) {
+const Pet = function(Pets) {
     this.PetID = Pets.PetID;
     this.Breed = Pets.Breed;
     this.Age = Pets.Age;
