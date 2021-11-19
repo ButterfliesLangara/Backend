@@ -16,7 +16,8 @@ exports.create = (req, res) => {
         NumberOfSteps : req.body.NumberOfSteps,
         UserID : req.body.UserID,
         Distance: req.body.Distance,
-        Duration: req.body.Duration
+        Duration: req.body.Duration,
+        PetName: req.body.PetName,
     });
     Pet.create(pet, (err, data) => {
         if (err)
