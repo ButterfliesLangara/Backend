@@ -18,6 +18,7 @@ exports.create = (req, res) => {
         Distance: req.body.Distance,
         Duration: req.body.Duration,
         PetName: req.body.PetName,
+        Date: req.body.PetName,
     });
     Pet.create(pet, (err, data) => {
         if (err)

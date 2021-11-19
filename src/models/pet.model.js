@@ -13,6 +13,7 @@ const Pet = function(Pet) {
     this.Duration = Pet.Duration;
     this.UserID = Pet.UserID;
     this.PetName = Pet.PetName;
+    this.Date = Pet.Date;
 };
 
 Pet.create = (newPet, result) => {
