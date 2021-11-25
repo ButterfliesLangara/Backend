@@ -6,6 +6,7 @@ exports.create = (req, res) => {
         message: "Content can not be empty!"
         });
     };
+console.log(req)
     const pet = new Pet({
         PetID : req.body.PetID,
         Breed : req.body.Breed,
@@ -18,7 +19,7 @@ exports.create = (req, res) => {
         Distance: req.body.Distance,
         Duration: req.body.Duration,
         PetName: req.body.PetName,
-        Date: req.body.PetName,
+        Date: req.body.Date,
     });
     Pet.create(pet, (err, data) => {
         if (err)

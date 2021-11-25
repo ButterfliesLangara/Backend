@@ -38,7 +38,7 @@ exports.findAll = (req, res) => {
 
 // Find a single Customer with a customerId
 exports.findOne = (req, res) => {
-    User.findById(req.params.UserID, (err, data) => {
+    User.findById(`'${req.params.UserID}'`, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
