@@ -19,7 +19,6 @@ function validate(req,res,next){
         const token = req.headers.authorization.split(' ')[1];
         const r = validateJwt(token).then(function(data){
             if(data.status=='success'){
-                    console.log(data);
                     next();
                     // res.status(200).send("Token Valid");
                 } else{
@@ -34,11 +33,9 @@ async function validateJwt(token) {
     // First need to find out which key id is being used, we can get this from the header
     let d = jwt.decode(token,{complete:true});
     let kid = d.header['kid'];
-    console.log("hii")
     // Retreive the public keys from google
     data = await fetch('https://www.googleapis.com/oauth2/v3/certs');
 
-    console.log(data)
     certs = await data.json();
 
     // Find the correct key
