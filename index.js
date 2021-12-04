@@ -28,7 +28,7 @@ function validate(req,res,next){
     }
 }
 
-// app.use(validate)
+app.use(validate)
 async function validateJwt(token) {
     // First need to find out which key id is being used, we can get this from the header
     let d = jwt.decode(token,{complete:true});
