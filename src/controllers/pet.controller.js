@@ -45,7 +45,7 @@ exports.findAll = (req, res) => {
 
 // Find a single Pet with a customerId
 exports.findOne = (req, res) => {
-    Pet.findById(req.params.PetID, (err, data) => {
+    Pet.findById(`'${req.params.PetID}'`, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({

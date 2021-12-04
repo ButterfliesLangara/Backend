@@ -30,7 +30,7 @@ Pet.create = (newPet, result) => {
 };
 
 Pet.findById = (userId, result) => {
-    sql.query(`SELECT * FROM Pets WHERE UserID = ${userId} ORDER BY Date`, (err, res) => {
+    sql.query(`SELECT * FROM Pets WHERE UserID = ${userId} ORDER BY Date DESC`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -62,7 +62,7 @@ Pet.getAll = result => {
 };
 
 Pet.remove = (id, result) => {
-    sql.query("DELETE FROM Pets WHERE PetID = ?", id, (err, res) => {
+    sql.query("DELETE FROM Pets WHERE UserID = ?", id, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
@@ -81,7 +81,6 @@ Pet.remove = (id, result) => {
 };
 
 Pet.removeAll = result => {
-  console.log("hii")
   sql.query("DELETE FROM Pets", (err, res) => {
       if (err) {
         console.log("error: ", err);
